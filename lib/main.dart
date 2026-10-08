@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Crosscounter APp',
       theme: ThemeData(),
       home: const MyHomePage(title: 'Crosscounter'),
@@ -26,6 +27,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int number = 0;
+  int counter (){
+    number++;
+    return number;
+  }
 
   @override
   Widget build(BuildContext context){
@@ -33,17 +39,18 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 67, 134, 221),
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               padding: EdgeInsets.all(8.0),
               color: Color.fromARGB(255, 88, 182, 236),
-              child: Center(child: Text ('Number Placeholder'))),
-            Text('Overengineered Counter'),
+              child: Center(child: Text ('Number'))),
+            Expanded(
+              child:Center(
+                child: Text('Overengineered Counter'))),
             Container(
               padding: EdgeInsets.all(8.0),
               color: Color.fromARGB(255, 88, 182, 236),
-              child: Center(child: Text ('Number Placeholder'))),
+              child: Center(child: Text ('Number'))),
           ],
         ),
       ),
@@ -69,11 +76,52 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Center(
-                      child: Text('Counter 1'),
+                    Expanded(
+                      child: Center(
+                        child: Row(
+                            
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 150, 200, 14),
+                                border: Border.all(
+                                color: Colors.black,
+                                width: 2,
+                              )),
+                              height: 40,
+                              child: TextButton(
+                                onPressed: counter,
+                                child: const Icon(Icons.arrow_upward)
+                                ),
+                            ),
+
+                            Container(
+                              padding: EdgeInsets.fromLTRB(100, 10, 100, 10),
+                              color: Colors.blue,
+                              child: const Text('data')),
+        
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 150, 200, 14),
+                                border: Border.all(
+                                color: Colors.black,
+                                width: 2,
+                              )),
+                              height: 40,
+                              child: TextButton(
+                                onPressed: counter,
+                                child: const Icon(Icons.arrow_downward)
+                                ,),
+                            )
+                          ]
+                        ),
+                      ),
                     ),
-                    Center(
-                      child: Text('Counter 2'),
+                    Expanded(
+                      child: Center(
+                        child: Text('Counter 2'),
+                      ),
                     ),
                   ],
               )),
@@ -81,11 +129,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Center(
-                      child: Text('Counter 3'),
+                    Expanded(
+                      child: Center(
+                        child: Text('Counter 3'),
+                      ),
                     ),
-                    Center(
-                      child: Text('Counter 4'),
+                    Expanded(
+                      child: Center(
+                        child: Text('Counter 4'),
+                      ),
                     ),
                   ],
                 ))
